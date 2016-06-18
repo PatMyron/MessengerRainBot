@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
 		sendMessage(event.sender.id, {text: "Send your location"}); // event.message.text
         }
 	else if (event.message) {
-		sendMessage(event.sender.id, {text: "1" + String(event.message.attachments[0].payload.coordinates.lat)});
+		sendMessage(event.sender.id, {text: event.message.attachments[0].payload.coordinates.lat});
 	}
     }
     res.sendStatus(200);
