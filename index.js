@@ -30,6 +30,13 @@ app.post('/webhook', function (req, res) {
 		sendMessage(event.sender.id, {text: "Send your location"}); // event.message.text
         }
 	else if (event.message) {
+		urlBase = "http://api.wunderground.com/api/57fd25cc02e9da86/conditions/forecast/alert/q/"
+		lat = event.message.attachments[0].payload.coordinates.lat
+		lon = event.message.attachments[0].payload.coordinates.long
+		jQuery.get( urlBase + String(lat) + "," + String(lon) + ".json", function( response ) { 
+    	                sendMessage(event.sender.id, {text: "hi"});
+			// response contains site information
+		} );
 		sendMessage(event.sender.id, {text: event.message.attachments[0].payload.coordinates.lat});
 	}
     }
