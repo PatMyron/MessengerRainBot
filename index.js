@@ -36,10 +36,16 @@ app.post('/webhook', function (req, res) {
 		totUrl = urlBase + String(lat) + "," + String(lon) + ".json"
                 sendMessage(event.sender.id, {text: totUrl});
 
-		jQuery.get( totUrl, function( response ) { 
-    	                sendMessage(event.sender.id, {text: "hi"});
-			// response contains site information
-		} );
+request({
+    url: url,
+}, function (error, response, body) {
+
+    if (!error && response.statusCode === 200) {
+	sendMessage(event.sender.id, {text: body});
+    }
+})
+
+
 	}
     }
     res.sendStatus(200);
