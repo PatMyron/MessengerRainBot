@@ -42,6 +42,7 @@ app.post('/webhook', function (req, res) {
 	}
 	events = []
     }
+	req.body.entry[0].messaging = []
     res.sendStatus(200);
 });
 
