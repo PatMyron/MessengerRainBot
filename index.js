@@ -29,7 +29,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
 		sendMessage(event.sender.id, {text: "Send your location"}); // event.message.text
         }
-	else if (event.message && event.message.attachments[0] && event.message.attachments[0].payload.coordinates) {
+	else if (event.message && event.message.attachments[0] && event.message.attachments[0].payload) {
 		urlBase = "http://api.wunderground.com/api/57fd25cc02e9da86/conditions/forecast/alert/q/"
 		lat = event.message.attachments[0].payload.coordinates.lat
 		lon = event.message.attachments[0].payload.coordinates.long
