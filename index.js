@@ -34,7 +34,18 @@ app.post('/webhook', function (req, res) {
 		lat = event.message.attachments[0].payload.coordinates.lat
 		lon = event.message.attachments[0].payload.coordinates.long
 		totUrl = urlBase + String(lat) + "," + String(lon) + ".json"
-                sendMessage(event.sender.id, {text: totUrl});
+
+//                sendMessage(event.sender.id, {text: totUrl});
+
+		request({
+		    url: totUrl,
+		    json: true
+		}, function (error, response, body) {
+
+		    if (!error && response.statusCode === 200) {
+			sendMessage(event.sender.id, {text: body});
+		    }
+		})
 	} 
 	events = []
     }
