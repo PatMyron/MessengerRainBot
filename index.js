@@ -36,6 +36,7 @@ app.post('/webhook', function (req, res) {
 		totUrl = urlBase + String(lat) + "," + String(lon) + ".json"
                 sendMessage(event.sender.id, {text: totUrl});
 
+/*
 request({
     url: totUrl,
     json: true
@@ -45,7 +46,7 @@ request({
 	sendMessage(event.sender.id, {text: body});
     }
 })
-
+*/
 
 	}
     }
