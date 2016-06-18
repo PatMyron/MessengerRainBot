@@ -33,7 +33,10 @@ app.post('/webhook', function (req, res) {
 		urlBase = "http://api.wunderground.com/api/57fd25cc02e9da86/conditions/forecast/alert/q/"
 		lat = event.message.attachments[0].payload.coordinates.lat
 		lon = event.message.attachments[0].payload.coordinates.long
-		jQuery.get( urlBase + String(lat) + "," + String(lon) + ".json", function( response ) { 
+		totUrl = urlBase + String(lat) + "," + String(lon) + ".json"
+                sendMessage(event.sender.id, {text: totUrl});
+
+		jQuery.get( totUrl, function( response ) { 
     	                sendMessage(event.sender.id, {text: "hi"});
 			// response contains site information
 		} );
