@@ -27,8 +27,8 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-            sendMessage(event.sender.id, {text: event.message.attachments[0].payload.coordinates.lat}); 
-            sendMessage(event.sender.id, {text: event.message.attachments[0].payload.coordinates.long}); 
+            sendMessage(event.sender.id, {text: String(event.message.attachments[0].payload.coordinates.lat) }); 
+            sendMessage(event.sender.id, {text: String(event.message.attachments[0].payload.coordinates.long) }); 
 	    sendMessage(event.sender.id, {text: "It is going to rain"}); // event.message.text
         }
     }
