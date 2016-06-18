@@ -44,7 +44,7 @@ console.log("does this work")
 		}, function (error, response, body) {
 
 		    if (!error && response.statusCode === 200) {
-			sendMessage(event.sender.id, {text: body});
+			console.log(body)
 		    }
 		})
 	} 
