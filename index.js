@@ -37,7 +37,7 @@ app.post('/webhook', function (req, res) {
                 sendMessage(event.sender.id, {text: totUrl});
 
 request({
-    url: url,
+    url: totUrl,
 }, function (error, response, body) {
 
     if (!error && response.statusCode === 200) {
