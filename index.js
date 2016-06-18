@@ -35,7 +35,6 @@ app.post('/webhook', function (req, res) {
 		lon = event.message.attachments[0].payload.coordinates.long
 		totUrl = urlBase + String(lat) + "," + String(lon) + ".json"
 
-console.log("does this work")
 //                sendMessage(event.sender.id, {text: totUrl});
 
 		request({
@@ -44,7 +43,13 @@ console.log("does this work")
 		}, function (error, response, body) {
 
 		    if (!error && response.statusCode === 200) {
-			console.log(body.current_observation.precip_1hr_metric)
+			var rain = body.current_observation.precip_1hr_metric
+			if (rain > 0) {
+				sendMessage(event.sender.id, {text: "It is going to rain. Grab an umbrella!"});
+			}
+			else {
+				sendMessage(event.sender.id, {text: "No rain ahead!"});
+			}
 		    }
 		})
 	} 
