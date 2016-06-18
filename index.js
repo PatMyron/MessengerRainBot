@@ -45,7 +45,7 @@ app.post('/webhook', function (req, res) {
 		    if (!error && response.statusCode === 200) {
 			var rain = body.current_observation.precip_1hr_metric
 			if (rain > 0) {
-				sendMessage(event.sender.id, {text: "It is going to rain. Grab an umbrella!"});
+				sendMessage(event.sender.id, {text: "It's gonna rain. Grab an umbrella!"});
 			}
 			else {
 				sendMessage(event.sender.id, {text: "No rain ahead!"});
