@@ -40,7 +40,6 @@ app.post('/webhook', function (req, res) {
     	                sendMessage(event.sender.id, {text: "hi"});
 			// response contains site information
 		} );
-		sendMessage(event.sender.id, {text: event.message.attachments[0].payload.coordinates.lat});
 	}
     }
     res.sendStatus(200);
