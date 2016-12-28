@@ -1,13 +1,13 @@
 {
-  "name": "testbot",
+  "name": "Messenger rain bot",
   "version": "1.0.0",
-  "description": "rain bot",
+  "description": "Messenger rain bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Pat Myron",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.1",
