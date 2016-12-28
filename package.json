@@ -1,6 +1,6 @@
 {
-  "name": "messenger rain bot",
-  "version": "1.0.0",
+  "name": "rain bot",
+  "version": "1.0.1",
   "description": "messenger rain bot",
   "main": "index.js",
   "scripts": {
