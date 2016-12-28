@@ -1,6 +1,9 @@
 {
   "name": "rain bot",
   "version": "1.0.1",
+  "engines": {
+    "node": "6.9.2"
+  }
   "description": "messenger rain bot",
   "main": "index.js",
   "scripts": {
