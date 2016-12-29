@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
-  if (req.query['hub.verify_token'] === 'EAAWWpxUBMGoBANlKHUR63Dz2WLZBMHACQRi65zwj46wFSb3aJCThUV4BLwevZCciUDeyVnYpGcfgrzu0reh3XqKdTkZBxVA1HhIfrAhbQjsy5ABYfUFTbfAdck4QmH0vJV6ZCAgAcGdrBl3pMaTQa2eCrPetlsZBHXAjZBIuISOgZDZD') {
+  if (req.query['hub.verify_token'] === 'EAAWWpxUBMGoBAOFtZCW0xiSULDZBzSGlfKZBLloW2YeIOLJlcvXBlFYJjpsNIRfAAu26uiAwH2kJi5WsjtC9ZBKaYXfvkRxIGGCFZB9DPPm4KO4ZCKGKwnQc5M9GUuoEWjIGPGzT36mTAPt7W5m7Lwgv5vpDI7gMBEqmy6tM7i5gZDZD') {
     res.send(req.query['hub.challenge']);
   } else {
     res.send('Invalid verify token');
