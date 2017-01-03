@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
-  if (req.query['hub.verify_token'] === 'EAAWWpxUBMGoBADRyy3cKpVbXclQMMhUT7YTcJZCoxPj1qnWdn2zjETBIjG7ZAgBwIC8ZALb4JCCRmbCWLJZCXtfn1M53rFwFOokk2uicd9Ez9oZCfxBZCGc2diddXiItwf1kOR1S4xC8GDQ8XTZBOz0AP8EY3jQd7yBxdVpIzy8bgZDZD') {
+  if (req.query['hub.verify_token'] === 'EAAWWpxUBMGoBAI5pY8qaqKnqdm4gM1dx5eBJATX5qM7srP74zWsGPzW3PMAsVEFCQxiw0BuMRyeR4rHCINkZAx2jskAWHGn70Hsi9qyjATrGsQnsCzGXFtJgt8fbxZCvZCMoxioZC12MvJr3tZBIAgCTDu3aYZCIEtdXD2dNpVNQZDZD') {
     res.send(req.query['hub.challenge']);
   } else {
     res.send('Invalid verify token');
@@ -26,9 +26,7 @@ app.post('/webhook', function (req, res) {
   var events = req.body.entry[0].messaging;
   for (i = 0; i < events.length; i++) {
     var event = events[i];
-    if (event.message && event.message.text) {
-      sendMessage(event.sender.id, {text: "Hi. Send your location"}); // event.message.text
-    } else if (event.message && event.message.attachments && event.message.attachments[0] && event.message.attachments[0].payload && event.message.attachments[0].payload.coordinates) {
+    if (event.message && event.message.attachments && event.message.attachments[0] && event.message.attachments[0].payload && event.message.attachments[0].payload.coordinates) {
       urlBase = "http://api.wunderground.com/api/57fd25cc02e9da86/conditions/forecast/alert/q/"
       lat = event.message.attachments[0].payload.coordinates.lat
       lon = event.message.attachments[0].payload.coordinates.long
@@ -46,8 +44,13 @@ app.post('/webhook', function (req, res) {
           } else {
             sendMessage(event.sender.id, {text: "No rain ahead!"});
           }
+        } else {
+          sendMessage(event.sender.id, {text: "Sorry. Weather server error..."});
+          console.log('weather error: ', error);
         }
       })
+    } else {
+      sendMessage(event.sender.id, {text: "Hi. Send your location"});
     } 
     events = []
   }
