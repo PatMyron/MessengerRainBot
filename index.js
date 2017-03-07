@@ -66,7 +66,7 @@ function sendMessage(recipientId, message) {
     method: 'POST',
     json: {
       recipient: {id: recipientId},
-      message: message,
+      message: message
     }
   }, function(error, response, body) {
     if (error) {
@@ -75,4 +75,4 @@ function sendMessage(recipientId, message) {
       console.log('Error: ', response.body.error);
     }
   });
-};
+}
