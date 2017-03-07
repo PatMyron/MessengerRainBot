@@ -24,13 +24,13 @@ app.get('/webhook', function (req, res) {
 // handler receiving messages
 app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
-    for (i = 0; i < events.length; i++) {
+    for (var i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.attachments && event.message.attachments[0] && event.message.attachments[0].payload && event.message.attachments[0].payload.coordinates) {
-            urlBase = "http://api.wunderground.com/api/57fd25cc02e9da86/conditions/forecast/alert/q/";
-            lat = event.message.attachments[0].payload.coordinates.lat;
-            lon = event.message.attachments[0].payload.coordinates.long;
-            totUrl = urlBase + String(lat) + "," + String(lon) + ".json";
+            var urlBase = "http://api.wunderground.com/api/57fd25cc02e9da86/conditions/forecast/alert/q/";
+            var lat = event.message.attachments[0].payload.coordinates.lat;
+            var lon = event.message.attachments[0].payload.coordinates.long;
+            var totUrl = urlBase + String(lat) + "," + String(lon) + ".json";
 
             request({
                 url: totUrl,
